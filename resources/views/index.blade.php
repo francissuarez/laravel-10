@@ -12,6 +12,16 @@
 
 <h1> welcome to the worl</h1>
 
+<form>
+
+<tr>
+    <td>name</td>
+    <td>email</td>
+    <td>address</td>
+</tr>
+
+</form>
+
 </body>
 </html>
 
