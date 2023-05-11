@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class customerController extends Controller
 {
@@ -40,5 +42,20 @@ class customerController extends Controller
 
         return view("index",['users' => $data]);
 
+    }
+
+
+    //trying code
+
+    public function create(Request $request ){
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+
+        ]);
+
+        return redirect('index', compact('user'));
     }
 }

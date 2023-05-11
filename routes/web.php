@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\customerController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -18,24 +17,15 @@ use App\Http\Controllers\customerController;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('/index', function () {
-//    return view('index');
-//});
 
-//Route::controller( customerController::class)->group(function () {
-////    Route::get('app', 'user')->name('app.search');
-//    Route::get('/index','customers')->name('index.customer');
-//});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::controller(customerController::class)->group(function () {
-    Route::get('/index', 'Customers');
-//    Route::post('/orders', 'store');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Route::controller(customerController::class)->group(function (){
-//
-//
-//    Route::get('index', 'Customers')->name('index.customers');
-//
-//
-//});
+require __DIR__.'/auth.php';
