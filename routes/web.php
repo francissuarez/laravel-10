@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\customerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/index', function () {
-    return view('index');
+//Route::get('/index', function () {
+//    return view('index');
+//});
+
+//Route::controller( customerController::class)->group(function () {
+////    Route::get('app', 'user')->name('app.search');
+//    Route::get('/index','customers')->name('index.customer');
+//});
+
+Route::controller(customerController::class)->group(function () {
+    Route::get('/index', 'Customers');
+//    Route::post('/orders', 'store');
 });
+
+//Route::controller(customerController::class)->group(function (){
+//
+//
+//    Route::get('index', 'Customers')->name('index.customers');
+//
+//
+//});
