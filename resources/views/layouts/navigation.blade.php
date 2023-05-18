@@ -4,19 +4,45 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="shrink-0 flex items-center " style="margin-top: 20px ; ">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+
+{{--                        <img  src="/avatars/{{ Auth::user()->avatar }}" style="width:80px;margin-top: 10px; margin-bottom:10px; border-radius: 50%;" alt="asdasd">--}}
+
+{{--                           <img style="width:100px;height: 10vh; margin-top: 10px; margin-bottom:10px;border-radius: 49% " src="/storage/{{$user->avatar}}" alt="not good image">--}}
+
+
+
+
+                            <img style="width:100px;height: 10vh; margin-top: 10px; margin-bottom:10px;border-radius: 49% " src="storage/{{Auth::user()->avatar}}" alt="not good image">
+
+
+
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Dashboard' ) }}
+                    </x-nav-link>
+                </div>
+
+
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('student.search')" :active="request()->routeIs('dashboard')">
+                        {{ __('Student' ) }}
                     </x-nav-link>
                 </div>
             </div>
+{{--            francis--}}
+
+
+
+
+
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

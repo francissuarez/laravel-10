@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,19 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+
+
+
+
+//        dd($request->user()->avatar);
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
+
+
+
+
 
     /**
      * Update the user's profile information.
@@ -34,12 +44,16 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', 'The profile was updated');
     }
 
     /**
      * Delete the user's account.
      */
+
+
+
+
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
